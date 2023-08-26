@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -12,7 +11,7 @@ func TestFactorial(t *testing.T) {
 		name           string
 		n              int
 		expectedResult int
-		expectedError  error
+		expectedError  string
 	}{
 		{
 			name:           "Zero",
@@ -43,15 +42,15 @@ func TestFactorial(t *testing.T) {
 			name:           "Negative number",
 			n:              -1,
 			expectedResult: 0,
-			expectedError:  errors.New("Factorial is defined only for positive number; -1 is negative"),
+			expectedError:  "Factorial is defined only for positive number; -1 is negative",
 		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			result, err := Factorial(test.n)
-			if test.expectedError != nil {
-				// TODO
+			if test.expectedError != "" {
+				assert.EqualError(t, err, test.expectedError)
 			} else {
 				assert.NoError(t, err)
 				assert.Equal(t, test.expectedResult, result)
