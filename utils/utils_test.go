@@ -42,7 +42,7 @@ func TestFactorial(t *testing.T) {
 			name:           "Negative number",
 			n:              -1,
 			expectedResult: 0,
-			expectedError:  "Factorial is defined only for positive number; -1 is negative",
+			expectedError:  "Factorial is defined only for positive numbers; -1 is negative",
 		},
 	}
 

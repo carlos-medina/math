@@ -9,7 +9,7 @@ import (
 // equal to n. If n is negative, Factorial returns an error
 func Factorial(n int) (int, error) {
 	if n < 0 {
-		return 0, errors.New(fmt.Sprintf("Factorial is defined only for positive number; %v is negative", n))
+		return 0, errors.New(fmt.Sprintf("Factorial is defined only for positive numbers; %v is negative", n))
 	}
 
 	return factorial(n), nil
